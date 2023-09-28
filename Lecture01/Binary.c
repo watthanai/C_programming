@@ -15,9 +15,9 @@ void print_bits(int v) /* print binary format of int v */
 void main()
 {
     int c = 100;
-    printf("%5d = ", c);
+    printf("%3d = ", c);
     print_bits(c);
-    c = -100;
+    c = -100;    //*2 complement --> one's complement && +1
     printf("%5d = ", c);
     print_bits(c);
 }
