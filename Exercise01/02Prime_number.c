@@ -3,26 +3,26 @@
 void main()
 {
     /* declaration */
-    unsigned int number, initial,j;
+    unsigned int number, initial, j;
 
-    /* initialization */ 
-    initial = 2;  //prime number should more than 1
-    j = 2;        //prime number checking  
+    /* initialization */
+    initial = 2; // prime number should more than 1
+
     printf("Enter the number  : ");
-    scanf("%d",&number);
-        while (initial <= number)
+    scanf("%d", &number);
+    while (initial <= number)
+    {
+        for (j=2 ; j <= initial; j++) // prime number checking
         {
-            for (j = 2; j <= initial; j++)
+            if (initial % j == 0)
             {
-                if (initial % j == 0)
-                {
-                    break;
-                }
+                break;
             }
-            if (initial == j)
-            {
-                printf("%d ", initial);
-            }
-            initial++;
         }
+        if (initial == j)
+        {
+            printf("%d ", initial);
+        }
+        initial++;
+    }
 }
