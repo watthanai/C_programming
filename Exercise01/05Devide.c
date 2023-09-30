@@ -2,23 +2,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-
-int dataset(int argc, char *argv[]) {
-
-    int result = 1;
-
-    for (int i = 1; i < argc; i++) {
-        int num = atoi(argv[i]);
-        result = multiply(result, num);
-    }
-
-    return result;
-
-
-}
-
-int multiply(int a, int b) {
+int Devide(int b, int a) {
     int result = 0;
+    int count=0;
     bool isNegative = false;
 
     // Determine the sign of the result
@@ -26,14 +12,24 @@ int multiply(int a, int b) {
         isNegative = true;
     }
 
+    if (a==0 || b==0){
+        printf("Error!! Divisible by 0");
+        exit(-1);
+    }
+
     // Make both numbers positive for the loop
     a = (a < 0) ? -a : a; //abs(a)
     b = (b < 0) ? -b : b; //abs(b)
 
     // Perform multiplication using repeated addition
-    for (int i = 0; i < b; i++) {
-        result += a;
+    while (b>=a)
+
+    {
+       b-=a ;
+       count++;
+       
     }
+    result =count;
 
     // Apply sign to the result if needed
     if (isNegative) {
@@ -41,9 +37,12 @@ int multiply(int a, int b) {
     }
 
     return result;
+    
 }
 
 int main(int argc, char *argv[]) {
-    int product = dataset(argc, argv);
-    printf("The product is: %d\n", product);
+
+
+     int result = Devide(atoi(argv[1]), atoi(argv[2]));
+     printf("The product is: %d\n", result);
 }
