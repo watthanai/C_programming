@@ -1,12 +1,11 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void primeFactor(unsigned int number)
 {
 
     /* declaration */
     unsigned int initial, j;
-    unsigned int *pointer;
-
     /* initialization */
     initial = 2; // prime number should more than 1
 
@@ -28,11 +27,15 @@ void primeFactor(unsigned int number)
     }
 }
 
-void main()
+int main(int argc, char *argv[])
 {
-    unsigned int number;
-    printf("Enter the number  : ");
-    scanf("%d", &number);
-    printf("%d = ",number);
-    primeFactor(number);
+    int N = atoi(argv[1]); 
+
+    if (N <= 1)
+    {
+        printf("There is not prime numbers up to %d.\n", N);
+        return 0;
+    }
+    printf("%d = " ,N);
+    primeFactor(N);
 }
