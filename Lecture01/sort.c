@@ -1,36 +1,54 @@
 #include <stdio.h>
-void swap(int *a0, int *a1) /* swap *a0 and *a1 */
+
+void printArray(int array[], int n)
 {
-    int t = *a0;
-    *a0 = *a1;
-    *a1 = t;
-}
-void sort(int a[], int n) /* sort array a of size n */
-{
-    int i, j;
-    for (i = 0; i < n; i = i + 1)
-    {
-        for (j = 1; j < n - i; j = j + 1)
-        {
-            if (a[j - 1] > a[j])
-                swap(&a[j - 1], &a[j]);
-        }
-    }
-}
-void printAr(int a[],size_t a_size)
-{    
-    for (int i =0 ;i< a_size;i++)
-    {
-        printf("%2d",a[i]);
-    }
-    printf("\n");
+	int j;
+	printf("array[%d] = {", n );
+	for (j = 0 ; j< n; j++)
+	{
+		if( j >0) printf(", ");
+		printf("%d", array[j]);
+	}
+	printf("} \n");
 
 }
+
+void swap(int  *a0, int *a1)
+{
+	int t = *a0;
+	*a0 = *a1;
+	*a1 = t;
+
+}
+
+void bbsort(int a[], int n)
+{
+	
+	int i,j;
+	printf("Start Sorting \n");	
+	for (i=0; i<n; i = i +1)
+	{
+
+		for (j =1; j < n-i ; j = j+1)
+		{
+			printf("n = %d : i = %d : j =%d : n-i = %d \n",n,i,j ,(n-i));
+
+			if( a[j-1] > a[j] )  
+			{	
+				swap(&a[j-1],&a[j]);
+			}
+		}
+	}
+
+}
+
 void main()
 {
-    int a[10] = {10, 5, 2, 1, 7, 6, 3, 4, 9, 8};
-    size_t len = (&a)[1] - a; // will return the size of array
-    printAr(a,len);  //printArray(a);
-    sort(a, 10);
-    printAr(a,len);  //printArray(a);
+	int a[10] = {10,5,3,4,2,16,9,8,1,0};
+	printf("Before Sorting: ");
+	printArray(a,10);
+	bbsort(a,10);
+	printf("After Sorted: ");
+	printArray(a,10);
+
 }
